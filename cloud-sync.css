@@ -1,0 +1,158 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Live Cloud Auto-Sync Indicator & Topbar Responsive Optimization
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Prevent horizontal overflow across the entire app */
+html, body, .shell, .main {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Streamlined topbar layout */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: nowrap;
+  max-width: 100%;
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+}
+
+/* Subtle, Elegant Live Auto-Sync Status Chip */
+.live-sync-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(19, 185, 173, 0.12);
+  border: 1px solid rgba(19, 185, 173, 0.3);
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 9px;
+  border-radius: 999px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.live-sync-indicator:hover {
+  background: rgba(19, 185, 173, 0.22);
+  border-color: var(--teal);
+}
+
+.live-sync-indicator .sync-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981; /* Green live dot */
+  display: inline-block;
+  box-shadow: 0 0 6px #10b981;
+}
+
+.live-sync-indicator .sync-icon {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.live-sync-indicator.syncing {
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.15);
+}
+
+.live-sync-indicator.syncing .sync-dot {
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+  animation: pulseDot 0.8s infinite alternate;
+}
+
+.live-sync-indicator.syncing .sync-icon {
+  display: inline-block;
+  animation: cloudSpinAnim 0.85s linear infinite;
+}
+
+.live-sync-indicator.offline {
+  border-color: rgba(245, 158, 11, 0.4);
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.live-sync-indicator.offline .sync-dot {
+  background: #f59e0b;
+  box-shadow: 0 0 6px #f59e0b;
+}
+
+.live-sync-indicator.error {
+  border-color: rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.12);
+}
+
+.live-sync-indicator.error .sync-dot {
+  background: #ef4444;
+  box-shadow: 0 0 6px #ef4444;
+}
+
+@keyframes cloudSpinAnim {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulseDot {
+  0% { transform: scale(0.85); opacity: 0.6; }
+  100% { transform: scale(1.25); opacity: 1; }
+}
+
+/* Mobile Topbar & Header Optimization */
+@media (max-width: 700px) {
+  .topbar {
+    gap: 6px;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+  }
+
+  .topbar h1 {
+    font-size: 19px;
+  }
+
+  .top-actions {
+    gap: 4px;
+  }
+
+  .live-sync-indicator {
+    padding: 4px 7px;
+    font-size: 10px;
+  }
+
+  .topbar-rfid-btn {
+    padding: 4px 7px;
+    font-size: 10.5px;
+  }
+
+  .icon-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+
+  .user span {
+    display: none;
+  }
+
+  .avatar {
+    width: 30px;
+    height: 30px;
+    font-size: 11px;
+  }
+
+  .top-actions .logout-btn {
+    width: 32px;
+    height: 32px;
+  }
+}
